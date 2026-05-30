@@ -1,0 +1,87 @@
+package servlets;
+
+import java.io.*;
+import java.sql.*;
+
+import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
+
+@WebServlet("/login")
+public class LoginServlet extends HttpServlet {
+
+    protected void doPost(
+            HttpServletRequest request,
+            HttpServletResponse response)
+            throws ServletException, IOException {
+
+        response.setContentType("text/html");
+
+        PrintWriter out =
+                response.getWriter();
+
+        try {
+
+            String username =
+                    request.getParameter("username");
+
+            String password =
+                    request.getParameter("password");
+
+            Class.forName(
+                    "com.mysql.cj.jdbc.Driver");
+
+            Connection con =
+                    DriverManager.getConnection(
+                            "jdbc:mysql://localhost:3306/studentdb",
+                            "root",
+                            "root");
+
+            String sql =
+                    "select * from users where username=? and password=?";
+
+            PreparedStatement ps =
+                    con.prepareStatement(sql);
+
+            ps.setString(1, username);
+            ps.setString(2, password);
+
+            ResultSet rs =
+                    ps.executeQuery();
+
+            if(rs.next()) {
+
+                // SESSION
+                HttpSession session =
+                        request.getSession();
+
+                session.setAttribute(
+                        "username",
+                        username);
+
+                // COOKIE
+                Cookie cookie =
+                        new Cookie(
+                                "user",
+                                username);
+
+                cookie.setMaxAge(60*60);
+
+                response.addCookie(cookie);
+
+                response.sendRedirect("home.jsp");
+
+            } else {
+
+                out.println(
+                        "<h1>Invalid Credentials</h1>");
+            }
+
+            con.close();
+
+        } catch(Exception e) {
+
+            out.println(e);
+        }
+    }
+}

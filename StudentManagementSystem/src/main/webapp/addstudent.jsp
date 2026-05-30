@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Add Student</title>
+</head>
+
+<body>
+
+<h2>Add Student</h2>
+
+<form action="add" method="post">
+
+ID:
+<input type="text" name="id">
+
+<br><br>
+
+Name:
+<input type="text" name="name">
+
+<br><br>
+
+Email:
+<input type="text" name="email">
+
+<br><br>
+
+<input type="submit"
+value="Add Student">
+
+</form>
+
+</body>
+</html>

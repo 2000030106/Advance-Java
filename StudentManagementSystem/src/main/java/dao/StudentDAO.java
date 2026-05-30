@@ -1,0 +1,89 @@
+package dao;
+
+
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import model.Student;
+import util.DBConnection;
+
+public class StudentDAO {
+
+public int addStudent(Student s) {
+
+    int status = 0;
+
+    try {
+
+        Connection con =
+            DBConnection.getConnection();
+
+        String sql =
+            "insert into student values(?,?,?)";
+
+        PreparedStatement ps =
+            con.prepareStatement(sql);
+
+        ps.setInt(1, s.getId());
+        ps.setString(2, s.getName());
+        ps.setString(3, s.getEmail());
+
+        status =
+            ps.executeUpdate();
+
+        con.close();
+
+    } catch(Exception e) {
+
+        e.printStackTrace();
+    }
+
+    return status;
+}
+
+public List<Student> getAllStudents() {
+
+    List<Student> list =
+        new ArrayList<Student>();
+
+    try {
+
+        Connection con =
+            DBConnection.getConnection();
+
+        String sql =
+            "select * from student";
+
+        PreparedStatement ps =
+            con.prepareStatement(sql);
+
+        ResultSet rs =
+            ps.executeQuery();
+
+        while(rs.next()) {
+
+            Student s =
+                new Student();
+
+            s.setId(rs.getInt(1));
+            s.setName(rs.getString(2));
+            s.setEmail(rs.getString(3));
+
+            list.add(s);
+        }
+
+        con.close();
+
+    } catch(Exception e) {
+
+        e.printStackTrace();
+    }
+
+    return list;
+}
+
+}
