@@ -62,3 +62,11 @@
 0:0:0:0:0:0:0:1 - - [30/May/2026:23:42:31 +0530] "GET /StudentManagementSystem/view HTTP/1.1" 200 471
 0:0:0:0:0:0:0:1 - - [30/May/2026:23:42:33 +0530] "GET /StudentManagementSystem/home.jsp HTTP/1.1" 200 313
 0:0:0:0:0:0:0:1 - - [30/May/2026:23:42:34 +0530] "GET /StudentManagementSystem/logout HTTP/1.1" 404 786
+127.0.0.1 - - [30/May/2026:23:42:51 +0530] "GET / HTTP/1.1" 404 752
+0:0:0:0:0:0:0:1 - - [30/May/2026:23:42:51 +0530] "GET /StudentManagementSystem/ HTTP/1.1" 404 780
+0:0:0:0:0:0:0:1 - - [30/May/2026:23:42:56 +0530] "GET /StudentManagementSystem/login.jsp HTTP/1.1" 200 368
+0:0:0:0:0:0:0:1 - - [30/May/2026:23:43:03 +0530] "POST /StudentManagementSystem/login HTTP/1.1" 200 313
+0:0:0:0:0:0:0:1 - - [30/May/2026:23:43:07 +0530] "GET /StudentManagementSystem/view HTTP/1.1" 200 471
+0:0:0:0:0:0:0:1 - - [30/May/2026:23:43:09 +0530] "GET /StudentManagementSystem/home.jsp HTTP/1.1" 200 313
+0:0:0:0:0:0:0:1 - - [30/May/2026:23:43:10 +0530] "GET /StudentManagementSystem/logout HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [30/May/2026:23:43:10 +0530] "GET /StudentManagementSystem/login.jsp HTTP/1.1" 200 368
